@@ -38,5 +38,5 @@ COPY . .
 # Expone el puerto 3000
 EXPOSE 3000
 
-# Ejecuta la aplicación usando Xvfb
+# Configura el comando de inicio con Xvfb
 CMD ["xvfb-run", "--server-args='-screen 0 1280x1024x24'", "node", "index.js"]
