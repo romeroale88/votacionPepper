@@ -28,10 +28,6 @@ app.get('/scrape', async (req, res) => {
                 `--proxy-server=${PROXY_HOST}:${PROXY_PORT}`,
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
-                '--disable-dev-shm-usage',
-                '--disable-gpu',
-                '--disable-software-rasterizer',
-                '--remote-debugging-port=9222',
             ],
             executablePath: puppeteer.executablePath(),
         });
