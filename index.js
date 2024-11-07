@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 // Ruta para ejecutar Puppeteer y extraer contenido
 app.get('/scrape', async (req, res) => {
     try {
+        console.log(process.env)
         console.log('Launching browser with DataImpulse proxy...');
 
         // Inicia Puppeteer con las credenciales del proxy
