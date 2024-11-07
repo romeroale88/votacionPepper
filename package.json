@@ -14,9 +14,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.1",
+    "express": "^4.17.1",
     "proxy-chain": "^2.5.4",
-    "puppeteer": "^23.7.0",
+    "puppeteer": "19.0.0",
     "puppeteer-core": "^23.7.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2"

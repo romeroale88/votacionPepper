@@ -47,7 +47,7 @@ app.get('/scrape', async (req, res) => {
         // Extraer el contenido HTML
 
         // Enviar el HTML al cliente
-        res.send(html);
+        // res.send(html);
     } catch (error) {
         console.log('Error:', error);
         res.status(500).send('Error al realizar la extracción de contenido');
