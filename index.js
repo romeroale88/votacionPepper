@@ -9,11 +9,18 @@ const PASSWORD = 'dace84b207c9e71c';
 
 // Inicializa la app de Express
 const app = express();
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000;
 
 // Servir el archivo HTML con el botón
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    res.send(`
+        <html>
+            <body>
+                <h1>Scraping con Proxy</h1>
+                <button onclick="window.location.href='/scrape'">Iniciar Scraping</button>
+            </body>
+        </html>
+    `);
 });
 
 // Ruta para ejecutar Puppeteer y extraer contenido
@@ -50,9 +57,13 @@ app.get('/scrape', async (req, res) => {
         await page.goto('https://zonavip.com.ar/mejor-salon-de-indumentaria-chaco-2023-2024-rubro-empresarial/', { waitUntil: 'networkidle2' });
         
         // Extraer el contenido HTML
+        const html = await page.content();
 
         // Enviar el HTML al cliente
-        // res.send(html);
+        res.send(html);
+
+        // Cerrar el navegador
+        await browser.close();
     } catch (error) {
         console.log('Error:', error);
         res.status(500).send('Error al realizar la extracción de contenido');
