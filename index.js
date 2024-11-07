@@ -9,7 +9,7 @@ const PASSWORD = 'dace84b207c9e71c';
 
 // Inicializa la app de Express
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000
 
 // Servir el archivo HTML con el botón
 app.get('/', (req, res) => {
