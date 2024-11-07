@@ -23,10 +23,16 @@ app.get('/scrape', async (req, res) => {
 
         // Inicia Puppeteer con las credenciales del proxy
         const browser = await puppeteer.launch({
-            headless: false,
-            args: [`--proxy-server=${PROXY_HOST}:${PROXY_PORT}`],
-            executablePath: process.env.CHROME_BIN || '/usr/bin/chromium-browser'
-        });
+            headless: false,  // Mantenemos 'headless' como false
+            args: [
+                `--proxy-server=${PROXY_HOST}:${PROXY_PORT}`,
+                '--no-sandbox',  // Necesario en entornos sin GUI
+                '--disable-setuid-sandbox',
+                '--disable-gpu',  // Deshabilitar GPU en entornos sin pantalla
+                '--disable-software-rasterizer',
+            ],
+            executablePath: process.env.CHROME_BIN || '/usr/bin/chromium-browser',  // Ruta del ejecutable de Chromium
+        })
 
         const page = await browser.newPage();
 
