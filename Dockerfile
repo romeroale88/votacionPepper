@@ -1,42 +1,32 @@
-# Usar una imagen base oficial de Node.js
-FROM node:16
+FROM node:16-slim
 
-# Crear y establecer el directorio de trabajo dentro del contenedor
-WORKDIR /
-
-# Copiar el archivo package.json y package-lock.json
-COPY package*.json ./
-
-# Instalar dependencias de Node.js
-RUN npm install
-
-# Instalar las bibliotecas adicionales para Puppeteer
+# Instalar dependencias necesarias para Puppeteer y Xvfb
 RUN apt-get update && apt-get install -y \
-    libdrm2 \
-    libx11-xcb1 \
-    libxcomposite1 \
-    libxdamage1 \
-    libxi6 \
-    libxtst6 \
+    libx11-dev \
+    libxkbfile-dev \
+    libsecret-1-dev \
+    libgconf-2-4 \
     libnss3 \
-    libcups2 \
     libxss1 \
-    libxcb1 \
-    libxrandr2 \
+    libappindicator3-1 \
     libasound2 \
+    libxtst6 \
     libatk1.0-0 \
     libatk-bridge2.0-0 \
-    libpangocairo-1.0-0 \
-    libpango-1.0-0 \
-    libgtk-3-0 \
+    libnspr4 \
     libgbm1 \
+    xdg-utils \
+    xvfb \
+    --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-# Copiar el resto de los archivos del proyecto al contenedor
+# Establecer el directorio de trabajo y copiar el código
+WORKDIR /app
 COPY . .
 
-# Exponer el puerto 3000
-EXPOSE 3000
+# Instalar dependencias de la app
+RUN npm install
 
-# Comando para ejecutar la aplicación al iniciar el contenedor
-CMD ["node", "index.js"]
+# Exponer el puerto y definir el comando de inicio
+EXPOSE 3000
+CMD ["npm", "start"]
