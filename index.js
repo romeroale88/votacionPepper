@@ -23,16 +23,10 @@ app.get('/scrape', async (req, res) => {
 
         // Inicia Puppeteer con las credenciales del proxy
         const browser = await puppeteer.launch({
-            headless: false,  // Mantenemos 'headless' como false
-            args: [
-                `--proxy-server=${PROXY_HOST}:${PROXY_PORT}`,
-                '--no-sandbox',  // Necesario en entornos sin GUI
-                '--disable-setuid-sandbox',
-                '--disable-gpu',  // Deshabilitar GPU en entornos sin pantalla
-                '--disable-software-rasterizer',
-            ],
-            executablePath: process.env.CHROME_BIN || '/usr/bin/chromium-browser',  // Ruta del ejecutable de Chromium
-        })
+            headless: false,
+            args: [`--proxy-server=${PROXY_HOST}:${PROXY_PORT}`],
+            executablePath: puppeteer.executablePath(),
+        });
 
         const page = await browser.newPage();
 
@@ -53,7 +47,7 @@ app.get('/scrape', async (req, res) => {
         // Extraer el contenido HTML
 
         // Enviar el HTML al cliente
-
+        res.send(html);
     } catch (error) {
         console.log('Error:', error);
         res.status(500).send('Error al realizar la extracción de contenido');
