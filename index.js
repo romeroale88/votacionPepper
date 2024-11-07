@@ -25,7 +25,7 @@ app.get('/scrape', async (req, res) => {
         const browser = await puppeteer.launch({
             headless: false,
             args: [`--proxy-server=${PROXY_HOST}:${PROXY_PORT}`],
-            executablePath: puppeteer.executablePath(),
+            executablePath: process.env.CHROME_BIN || '/usr/bin/chromium-browser'
         });
 
         const page = await browser.newPage();
