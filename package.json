@@ -1,0 +1,38 @@
+{
+  "name": "votacion-automatizada",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": {
+    "votacion-automatizada": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "proxy-chain": "^2.5.4",
+    "puppeteer": "^23.7.0",
+    "puppeteer-core": "^23.7.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  },
+  "pkg": {
+    "scripts": "index.js",
+    "ignore": [
+      "node_modules/typed-query-selector/shim.d.ts"
+    ],
+    "assets": [
+      "node_modules/puppeteer/.local-chromium/**/*"
+    ],
+    "targets": [
+      "node16-win-x64",
+      "node16-macos-x64",
+      "node16-linux-x64"
+    ]
+  },
+  "description": ""
+}
