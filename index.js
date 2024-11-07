@@ -24,7 +24,11 @@ app.get('/scrape', async (req, res) => {
         // Inicia Puppeteer con las credenciales del proxy
         const browser = await puppeteer.launch({
             headless: false,
-            args: [`--proxy-server=${PROXY_HOST}:${PROXY_PORT}`],
+            args: [
+                `--proxy-server=${PROXY_HOST}:${PROXY_PORT}`,
+                '--no-sandbox', // Añadir esta opción
+                '--disable-setuid-sandbox' // Opción adicional para mayor compatibilidad
+            ],
             executablePath: puppeteer.executablePath(),
         });
 
