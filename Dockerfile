@@ -18,4 +18,4 @@ COPY . .
 EXPOSE 3000
 
 # Comando para ejecutar la aplicación al iniciar el contenedor
-CMD ["node", "server.js"]
+CMD ["node", "index.js"]
