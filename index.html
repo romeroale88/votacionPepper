@@ -3,26 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejecutar Extracción</title>
+    <title>Test Puppeteer</title>
 </head>
 <body>
-    
-    <button id="scrapeButton">Ejecutar script</button>
-    <pre id="result" style="white-space: pre-wrap; background: #f8f8f8; padding: 10px; border: 1px solid #ddd;"></pre>
-
-    <script>
-        document.getElementById('scrapeButton').addEventListener('click', async () => {
-            const resultElement = document.getElementById('result');
-            resultElement.textContent = 'Extrayendo contenido...';
-
-            try {
-                const response = await fetch('/scrape');
-                const html = await response.text();
-                resultElement.textContent = html;
-            } catch (error) {
-                resultElement.textContent = 'Error al extraer el contenido: ' + error;
-            }
-        });
-    </script>
+    <h1>Bienvenido al servidor Express con Puppeteer</h1>
+    <button onclick="window.location.href='/scrape'">Ejecutar Scraping</button>
 </body>
 </html>
