@@ -30,7 +30,8 @@ app.get('/scrape', async (req, res) => {
                 '--disable-setuid-sandbox',
                 '--disable-dev-shm-usage',
                 '--disable-gpu',
-                '--disable-software-rasterizer'
+                '--disable-software-rasterizer',
+                '--remote-debugging-port=9222',
             ],
             executablePath: puppeteer.executablePath(),
         });
