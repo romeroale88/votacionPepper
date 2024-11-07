@@ -2,14 +2,14 @@ const express = require('express');
 const puppeteer = require('puppeteer');
 
 // Datos de proxy de DataImpulse
-const PROXY_HOST = process.env.PROXY_HOST;
-const PROXY_PORT = process.env.PROXY_PORT;
-const USERNAME = process.env.USERNAME;
-const PASSWORD = process.env.PASSWORD;
+const PROXY_HOST = 'gw.dataimpulse.com';
+const PROXY_PORT = '823';
+const USERNAME = '01260b6ec9b63209b3f1';
+const PASSWORD = 'dace84b207c9e71c';
 
 // Inicializa la app de Express
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 // Servir el archivo HTML con el botón
 app.get('/', (req, res) => {
@@ -19,7 +19,6 @@ app.get('/', (req, res) => {
 // Ruta para ejecutar Puppeteer y extraer contenido
 app.get('/scrape', async (req, res) => {
     try {
-        console.log(process.env)
         console.log('Launching browser with DataImpulse proxy...');
 
         // Inicia Puppeteer con las credenciales del proxy
