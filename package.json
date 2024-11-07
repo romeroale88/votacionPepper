@@ -18,7 +18,8 @@
     "puppeteer": "19.0.0",
     "puppeteer-core": "^23.7.0",
     "puppeteer-extra": "^3.3.6",
-    "puppeteer-extra-plugin-stealth": "^2.11.2"
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "which": "^5.0.0"
   },
   "pkg": {
     "scripts": "index.js",

@@ -29,7 +29,8 @@ app.get('/scrape', async (req, res) => {
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
             ],
-            executablePath: '/usr/bin/chromium-browser',
+            executablePath: puppeteer.executablePath(),
+            dumpio: true,
         });
 
         const page = await browser.newPage();
